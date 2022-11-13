@@ -63,7 +63,7 @@ export default function HomePage() {
             <>
                 <NavbarComponent />
                 <h1>home page</h1>
-                {!find ? <p>gaada cuy, cari yg bener</p> : null}
+                {!find ? <p>Not Found Package</p> : null}
                 <div className="mt-3">
                     <input className="border border-1" type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
                     <button onClick={() => handleFilter()}>Search</button>
