@@ -15,7 +15,6 @@ export default function AddPackage(){
         weightProduct: 0,
         typeProduct: '',
         typeService: 'Regular'
-
     })
     const [recipientCity, setRecipientCity] = useState(0)
     const [city, setCity] = useState([]);
