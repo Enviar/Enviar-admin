@@ -12,12 +12,12 @@ export default function AddPackage(){
         recipientName: '',
         recipientPhone: '',
         recipientAddress: '',
-        recipientCity: '',
-        weightProduct: '',
+        weightProduct: 0,
         typeProduct: '',
-        typeService: ''
+        typeService: 'Regular'
 
     })
+    const [recipientCity, setRecipientCity] = useState(0)
     const [city, setCity] = useState([]);
     const getCity = async () => {
         try {
@@ -35,8 +35,45 @@ export default function AddPackage(){
         const newInput = {
             ...inputFormPackage,
         }
-        newInput[e.target.name] = e.target.value
+          newInput[e.target.name] = e.target.value
+
         setInputFormPackage(newInput)
+        
+    }
+
+    const onSubmit = async(e) =>{
+       
+      try{
+        const response = await axios.post(`https://enviar-be.herokuapp.com/product`,{
+          senderName: inputFormPackage.senderName,
+          senderPhone: inputFormPackage.senderPhone,
+          recipientName: inputFormPackage.recipientName,
+          recipientPhone: inputFormPackage.recipientPhone,
+          recipientAddress: inputFormPackage.recipientAddress,
+          recipientCity: recipientCity,
+          weightProduct: inputFormPackage.weightProduct,
+          typeProduct: inputFormPackage.typeProduct,
+          typeService: inputFormPackage.typeService
+        },{
+          headers:{
+            access_token: localStorage.getItem("access_token")
+          }
+        })
+        Swal.fire(
+          'Success',
+          `Success Create Package`,
+          'success'
+        )
+        navigate("/")
+      }
+      catch(err){
+        Swal.fire(
+          'Error',
+          `${err.response.data.error.message}`,
+          'error'
+        )
+      }
+        
     }
 
     useEffect(() => {
@@ -92,7 +129,7 @@ export default function AddPackage(){
                     <DatalistInput
               placeholder="Recipient's City"
               name="recipientCity"
-              onChange={(e) => handleInputChange(e)}
+              onSelect={(e) => setRecipientCity(e.id)}
               items={city.map((x) => {
                 return {
                   id: x.id,
@@ -116,12 +153,12 @@ export default function AddPackage(){
                         placeholder="Product's Type"
                         name="typeProduct"
                     />
-                    <select name="typeService"   onChange={(e) => handleInputChange(e)} id="typeService">
+                    <select name="typeService" onChange={(e) => handleInputChange(e)} id="typeService">
                     <option value="regular">Regular</option>
-                    <option value="Extra">Extra</option>
+                    <option value="extra">Extra</option>
                     </select>
          
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-3" onClick={(e) => (e)}>Create Package</button>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-3" onClick={(e) => onSubmit(e)}>Create Package</button>
                 </div>
             </div>
         )
