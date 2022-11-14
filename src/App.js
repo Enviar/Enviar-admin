@@ -11,6 +11,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedLogin from "./components/ProtectedLogin";
 import "./assets/tailwind/index.css";
 import TestPage from "./components/Sidebar";
+import AddPackage from "./pages/AddPackage";
+import AddEmployee from "./pages/AddEmployee";
 
 function App() {
   return (
@@ -26,8 +28,10 @@ function App() {
         >
           <Route index={true} element={<HomePage />} />
           <Route path="/acceptance" element={<AcceptancePage />} />
+          <Route path="/addPackage" element={<AddPackage/>} />
           <Route path="package/:id" element={<DetailPage />} />
           <Route path="/employee" element={<EmployeePage />} />
+          <Route path="/addEmployee" element={<AddEmployee/>}/>
           <Route path="/test" element={<TestPage />} />
         </Route>
         <Route

@@ -28,25 +28,24 @@ export default function HomePage() {
     }
   };
 
-  const handleFilter = () => {
-    const newFilter = listPackage.filter((x) =>
-      x[0].Product.receiptNumber.startsWith(search)
-    );
-    console.log(newFilter);
-    if (!search) {
-      setListFake(listPackage);
-      setFind(true);
+    const handleFilter = () => {
+        const newFilter = listPackage.filter(x => x[0].Product.receiptNumber.startsWith(search))
+        console.log(newFilter);
+        if (!search) {
+            setListFake(listPackage)
+            setFind(true)
+        }
+        if (newFilter.length < 1) {
+            if (!search) {
+                setFind(true)
+            } else {
+                setFind(false)
+            }
+
+        } else {
+            setListFake(newFilter)
+        }
     }
-    if (newFilter.length < 1) {
-      if (!search) {
-        setFind(true);
-      } else {
-        setFind(false);
-      }
-    } else {
-      setListFake(newFilter);
-    }
-  };
 
   useEffect(() => {
     getListPackage();
@@ -73,7 +72,7 @@ export default function HomePage() {
         <p className="text-left mb-12 font-medium text-xl">
           List of on delivery packages are shown here
         </p>
-        {!find ? <p>gaada cuy, cari yg bener</p> : null}
+        {!find ? <p>The Package are not found</p> : null}
         <HomeTableComponent lists={fakeList} />
       </>
     );
