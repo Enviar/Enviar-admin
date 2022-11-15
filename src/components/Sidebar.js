@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar({ handleTrigger, isOpenState }) {
+  const navigate = useNavigate()
+
   const links = [
     {
       key: 1,
@@ -22,6 +25,13 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
       icon: <i class="fa-solid fa-pen-to-square text-lg"></i>,
     },
   ];
+
+  const logout = (e) =>{
+    e.preventDefault()
+    localStorage.clear()
+    navigate("/login")
+
+  }
 
   return (
     <>
@@ -103,15 +113,16 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
           className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer absolute bottom-4 hover:bg-blue-600 text-white ${
             isOpenState ? "w-[95%]" : "w-[75%]"
           }`}
+          onClick={(e)=> logout(e)}
         >
           <i class="fa-solid fa-right-from-bracket text-lg"></i>
-          <Link
-            to=""
+          <div
+           
             className="text-[15px] ml-4 text-gray-200 font-bold"
-            onClick={handleTrigger}
+          
           >
             {isOpenState ? "Logout" : ""}
-          </Link>
+          </div>
         </div>
       </div>
     </>
