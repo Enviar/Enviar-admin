@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -146,7 +146,7 @@ export default function AddEmployee(){
                  value={userData.phoneNumber}
                  onChange={(e) => handleInputChange(e)}
                  placeholder="Phone Number"
-                 type="text"
+                 type="number"
                  name="phoneNumber"
                     />
             </div>
@@ -179,9 +179,6 @@ export default function AddEmployee(){
             
             </div>
                       
-
-             
-
 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-3" disabled={isLoading} onClick={(e) => onSubmit(e)}>{!isLoading ?  "Create Employee" : "Loading ..."}</button>
                 </div>
             </div>
