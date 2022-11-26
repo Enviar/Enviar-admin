@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function Sidebar({ handleTrigger, isOpenState }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const links = [
     {
@@ -15,7 +15,7 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
     {
       key: 2,
       name: "Create Package",
-      href: "/",
+      href: "/addPackage",
       icon: <i class="fa-solid fa-folder-plus text-lg"></i>,
     },
     {
@@ -26,12 +26,11 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
     },
   ];
 
-  const logout = (e) =>{
-    e.preventDefault()
-    localStorage.clear()
-    navigate("/login")
-
-  }
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate("/login");
+  };
 
   return (
     <>
@@ -81,7 +80,7 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
             ></i>
             {/* <i className="bi bi-x cursor-pointer ml-28 lg:hidden"></i> */}
           </div>
-          <div className="my-2 bg-gray-600 h-[1px]"></div>
+          <div className="my-2 bg-white h-[1px]"></div>
         </div>
         <div
           className="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700 text-white"
@@ -99,7 +98,7 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
             <Link
               key={link.key}
               to={link.href}
-              className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
+              className="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-active-btn-green text-white"
             >
               {link.icon}
               <span className="text-[15px] ml-4 text-gray-200 font-medium">
@@ -108,19 +107,15 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
             </Link>
           );
         })}
-        <div className="my-4 bg-gray-600 h-[1px]"></div>
+        <div className="my-4 bg-white h-[.1px]"></div>
         <div
           className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer absolute bottom-4 hover:bg-blue-600 text-white ${
             isOpenState ? "w-[95%]" : "w-[75%]"
           }`}
-          onClick={(e)=> logout(e)}
+          onClick={(e) => logout(e)}
         >
           <i class="fa-solid fa-right-from-bracket text-lg"></i>
-          <div
-           
-            className="text-[15px] ml-4 text-gray-200 font-bold"
-          
-          >
+          <div className="text-[15px] ml-4 text-gray-200 font-bold">
             {isOpenState ? "Logout" : ""}
           </div>
         </div>
