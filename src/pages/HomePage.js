@@ -1,8 +1,10 @@
+import React, { Component } from 'react'
 import axios from "axios";
 import { useState, useEffect } from "react";
 import NavbarComponent from "../components/NavbarComponent";
 import HomeTableComponent from "../components/HomeTableComponent";
 import Swal from "sweetalert2";
+import loader from "../assets/image/loading.gif"
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [listPackage, setListPackage] = useState([]);
@@ -52,7 +54,11 @@ export default function HomePage() {
     getListPackage();
   }, []);
   if (loading) {
-    return <h3>loading</h3>;
+    return (
+      <div className="mt-25 ml-25">
+      <img className='mt-25 ml-25' src={loader} alt="spinner" />
+      </div>
+    )
   }
   if (!loading) {
     return (

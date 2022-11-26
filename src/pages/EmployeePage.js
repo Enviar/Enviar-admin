@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react"
+import React,{ useState, useEffect } from "react"
 import axios from 'axios'
 import EmployeeTableComponent from "../components/EmployeeTableComponent"
 import ModalEdit from "../components/ModalEdit"
 import Swal from "sweetalert2";
-
+import loader from "../assets/image/loading.gif"
 export default function EmployeePage() {
 
     const [employee, setEmployee] = useState([])
@@ -17,7 +17,6 @@ export default function EmployeePage() {
                     access_token: localStorage.getItem("access_token")
                 }
             })
-            // console.log(response.data.data);
             setEmployee(response.data.data)
             setLoading(false)
         }
@@ -75,7 +74,9 @@ export default function EmployeePage() {
     }, [])
     if (loading) {
         return (
-            <h1>loading</h1>
+            <div className="mt-25 ml-25">
+            <img src={loader} alt="spinner" />
+            </div>
         )
     }
     if (!loading) {
@@ -84,7 +85,6 @@ export default function EmployeePage() {
             <>
                 <h1>ini employee page</h1>
                 <div className="mt-5" >
-
                     <EmployeeTableComponent lists={employee} funcId={getEmployeeById} funcDelete={deleteEmployee} />
                     <ModalEdit show={showModal} setShow={setShowModal} data={emplo} setData={setEmplo} getAll={getEmployee} />
                 </div>
