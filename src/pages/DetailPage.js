@@ -79,82 +79,98 @@ export default function DetailPage() {
     return (
       <>
         <div className="text-left">
-          <h1 className="text-3xl font-semibold text-left my-2 mt-28">
+          <h1 className="text-3xl font-semibold text-left my-2 mt-12">
             Package Detail
           </h1>
-          <p className="text-left mb-12 font-medium text-xl">
-            Detail list of Package {detail.Product.receiptNumber}
+          <p className="text-left mb-12 font-normal text-xl">
+            Details of Package are shown here
           </p>
-          <h1>resi: {detail.Product.receiptNumber}</h1>
-          <h1>status: {detail.notes}</h1>
-          <h1>type product: {detail.Product.typeProduct}</h1>
-          <h1>destination: {destination.name}</h1>
-          <h1>Package Status</h1>
-          <div class="mb-3 xl:w-96">
-            <select
-              onChange={(e) => setStatus(e.target.value)}
-              value={status}
-              class="form-select appearance-none
-      block
-      w-full
+        </div>
+        <div className="w-9/12 rounded-md shadow-md text-left py-8 px-12 text-lg tracking-wide">
+          <p className="bg-primary-green p-4 text-white rounded">
+            Package ID: &nbsp;
+            <span className="font-semibold">
+              {detail.Product.receiptNumber}
+            </span>
+          </p>
+          <div className="bg-active-btn-green w-full h-[10px] -mt-2"></div>
+          <div className="flex justify-between">
+            <div className="flex justify-between w-4/12">
+              <div className="">
+                <p className="my-7">Status: </p>
+                <p className="my-7">Package Type: </p>
+                <p className="">Destination: </p>
+              </div>
+              <div className="font-semibold">
+                <p className="my-7">{detail.notes}</p>
+                <p className="my-7">{detail.Product.typeProduct}</p>
+                <p className="">{destination.name}</p>
+              </div>
+            </div>
+            <div className="mt-6 w-3/6">
+              <div class="mb-48">
+                <div className="flex justify-between items-center">
+                  <h1>Package Status</h1>
+                  <select
+                    onChange={(e) => setStatus(e.target.value)}
+                    value={status}
+                    class="form-select appearance-none
+                    w-4/6
       px-3
       py-1.5
       text-base
       font-normal
       text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
       border border-solid border-gray-300
       rounded
-      transition
-      ease-in-out
-      m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              aria-label="Default select example"
-            >
-              <option selected value="noStatus" disabled>
-                Open this select menu
-              </option>
-              <option value="transit_dikirim">transit_dikirim</option>
-              <option value="siap_dikirim">siap_dikirim</option>
-            </select>
-          </div>
-          <br />
-          <h1>Store Location</h1>
-          <div class="mb-3 xl:w-96">
-            <select
-              onChange={(e) => setStoreDet(e.target.value)}
-              value={storeDet}
-              class="form-select appearance-none
-      block
-      w-full
+                    aria-label="Default select example"
+                  >
+                    <option selected value="noStatus" disabled>
+                      Open this select menu
+                    </option>
+                    <option value="transit_dikirim">transit_dikirim</option>
+                    <option value="siap_dikirim">siap_dikirim</option>
+                  </select>
+                </div>
+
+                <div className="flex justify-between items-center mt-5">
+                  <h1>Store Location</h1>
+                  <select
+                    onChange={(e) => setStoreDet(e.target.value)}
+                    value={storeDet}
+                    class="form-select appearance-none
+                    w-4/6
+                    
       px-3
       py-1.5
       text-base
       font-normal
       text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
       border border-solid border-gray-300
       rounded
-      transition
-      ease-in-out
-      m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              aria-label="Default select example"
-            >
-              <option selected value="0" disabled>
-                Open this select menu
-              </option>
-              {store.map((el) => {
-                return <option value={el.id}>{el.name}</option>;
-              })}
-            </select>
+                    aria-label="Default select example"
+                  >
+                    <option selected value="0" disabled>
+                      Open this select menu
+                    </option>
+                    {store.map((el) => {
+                      return <option value={el.id}>{el.name}</option>;
+                    })}
+                  </select>
+                </div>
+              </div>
+              <div className="text-right">
+                <button
+                  onClick={(e) => addStatus(e)}
+                  className="bg-active-btn-green h-11 w-2/3 rounded text-white mr-auto tracking-wide"
+                >
+                  Update Package Details
+                </button>
+              </div>
+            </div>
           </div>
-          <button
-            onClick={(e) => addStatus(e)}
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Update
-          </button>
         </div>
       </>
     );

@@ -10,6 +10,7 @@ module.exports = {
         "btn-hover": "#E4E4E4",
         "dark-grey": "#353535",
         "text-field": "#E2E2E2",
+        border: "#B3B3B3",
       },
       padding: {
         17: "68px",

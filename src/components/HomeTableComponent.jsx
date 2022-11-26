@@ -1,46 +1,37 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export default function HomeTableComponent({ lists }) {
-    const navigate = useNavigate()
-    const openDetail = (e, id) => {
-        e.preventDefault()
-        navigate(`package/${id}`)
-    }
-    return (
-        <table class="hover:table-fixed border-separate border border-slate-400">
-            <thead>
-                <tr>
-                    <th className="border border-slate-300">Receipt Number</th>
-                    <th className="border border-slate-300">Product Type</th>
-                    <th className="border border-slate-300">Status</th>
-                    <th className="border border-slate-300">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    lists.map(el => {
-                        return (
-                            <tr>
-                                <td className="border border-slate-300">{el[0].Product.receiptNumber}</td>
-                                <td className="border border-slate-300">{el[0].Product.typeProduct}</td>
-                                <td className="border border-slate-300">{el[0].notes}</td>
-                                <td className="border border-slate-300">
-                                    <button onClick={(e) => openDetail(e, el[0].id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                        Detail
-                                    </button>
+  const navigate = useNavigate();
+  const openDetail = (e, id) => {
+    e.preventDefault();
+    navigate(`package/${id}`);
+  };
 
-                                </td>
-                            </tr>
-                        )
-                    })
-                }
-                {/* <tr>
-                        <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                        <td>Malcolm Lockyer</td>
-                        <td>1961</td>
-                    </tr> */}
-
-            </tbody>
-        </table>
-    )
+  return (
+    <div className="mb-14">
+      {lists.map((list) => {
+        return (
+          <li
+            className="w-full h-44 px-16 py-8 list-none text-lg bg-body my-3 rounded-lg flex items-center border-2 cursor-pointer duration-150 hover:translate-x-4 hover:bg-green-100"
+            onClick={(e) => openDetail(e, list[0].id)}
+          >
+            <div className="text-left text-lg border-r-2 border-gray-500 pr-10">
+              <p>Recipient Number:</p>
+              <p className="font-medium">{list[0].Product.receiptNumber}</p>
+            </div>
+            <div className="flex justify-between w-1/2 px-12 mx-auto">
+              <div>
+                <p>Package Type:</p>
+                <p className="font-medium">{list[0].Product.typeProduct}</p>
+              </div>
+              <div>
+                <p>Package Status:</p>
+                <p className="font-medium">{list[0].notes}</p>
+              </div>
+            </div>
+          </li>
+        );
+      })}
+    </div>
+  );
 }
