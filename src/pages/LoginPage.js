@@ -9,6 +9,8 @@ export default function LoginPage() {
         email: '',
         password: ''
     })
+    const [isLoading, setIsLoading] = useState(false)
+
     const handleInputChange = (e) => {
         e.preventDefault()
         const newInput = {
@@ -19,6 +21,7 @@ export default function LoginPage() {
     }
 
     const handleLogin = async (e) => {
+      setIsLoading(true)
         try {
             const response = await axios.post(`https://enviar-be.herokuapp.com/login`, {
                 email: inputFormUser.email,
@@ -42,6 +45,7 @@ export default function LoginPage() {
                 email: '',
                 password: ''
             })
+            setIsLoading(false)
         }
     }
 
@@ -97,11 +101,12 @@ export default function LoginPage() {
 
           <div className="text-center lg:text-left">
             <button
+            disabled={isLoading}
               type="button"
               className="inline-block px-7 py-3 bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-white-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={(e) => handleLogin(e)}
             >
-              Login
+              {!isLoading ? "Masuk" : "Loading ..."}
             </button>
             <p className="text-sm font-semibold mt-2 pt-1 mb-0">
               Don't have an account?
