@@ -121,27 +121,5 @@ export default function LoginPage() {
     </div>
   </div>
 </section>
-        // <div className="mt-4">
-        //     <h1>login</h1>
-        //     <div className="mt-4">
-        //         <input
-        //             className="border"
-        //             value={inputFormUser.email}
-        //             onChange={(e) => handleInputChange(e)}
-        //             placeholder="Email Address"
-        //             type="email"
-        //             name="email"
-        //         />
-        //         <input
-        //             className=" border ml-3"
-        //             value={inputFormUser.password}
-        //             onChange={(e) => handleInputChange(e)}
-        //             type="password"
-        //             placeholder="Password"
-        //             name="password"
-        //         />
-        //         <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-3" onClick={(e) => handleLogin(e)}>Login</button>
-        //     </div>
-        // </div>
     )
 }
