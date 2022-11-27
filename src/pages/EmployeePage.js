@@ -1,30 +1,33 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import EmployeeTableComponent from "../components/EmployeeTableComponent";
-import ModalEdit from "../components/ModalEdit";
-import Swal from "sweetalert2";
 
+import React,{ useState, useEffect } from "react"
+import axios from 'axios'
+import EmployeeTableComponent from "../components/EmployeeTableComponent"
+import ModalEdit from "../components/ModalEdit"
+import Swal from "sweetalert2";
+import loader from "../assets/image/loading.gif"
 export default function EmployeePage() {
-  const [employee, setEmployee] = useState([]);
-  const [emplo, setEmplo] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [showModal, setShowModal] = useState(false);
-  const getEmployee = async () => {
-    try {
-      const response = await axios.get(
-        `https://enviar-be.herokuapp.com/getEmployee`,
-        {
-          headers: {
-            access_token: localStorage.getItem("access_token"),
-          },
+    const [employee, setEmployee] = useState([])
+    const [emplo, setEmplo] = useState({})
+    const [loading, setLoading] = useState(true)
+    const [showModal, setShowModal] = useState(false)
+    
+    const getEmployee = async () => {
+        try {
+            const response = await axios.get(`https://enviar-be.herokuapp.com/getEmployee`, {
+                headers: {
+                    access_token: localStorage.getItem("access_token")
+                }
+            })
+            setEmployee(response.data.data)
+            setLoading(false)
         }
-      );
-      // console.log(response.data.data);
-      setEmployee(response.data.data);
-      setLoading(false);
-    } catch (err) {
-      Swal.fire("Error", `Server down, try again later`, "error");
-    }
+        catch (err) {
+            Swal.fire(
+                'Error',
+                `Server down, try again later`,
+                'error'
+              )
+        }
   };
 
   const deleteEmployee = async (id) => {
