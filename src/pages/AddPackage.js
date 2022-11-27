@@ -149,7 +149,7 @@ export default function AddPackage() {
             <div className="mt-4 flex px-5 items-center justify-between">
               <p className="font-medium">City</p>
               <DatalistInput
-                className="border"
+                className="border-2 rounded-md w-4/6"
                 placeholder="Recipient's City"
                 name="recipientCity"
                 onSelect={(e) => setRecipientCity(e.id)}
@@ -199,7 +199,7 @@ export default function AddPackage() {
               </select>
             </div>
           </div>
-          <div className="mt-44 mb-6 text-right">
+          <div className="mt-36 mb-6 text-right">
             <button
               class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded ml-3"
               onClick={(e) => onSubmit(e)}
