@@ -48,7 +48,20 @@ export default function LoginPage() {
             })
             setIsLoading(false)
         }
+      );
+      // console.log(response.data);
+      localStorage.setItem("access_token", response.data.access_token);
+      localStorage.setItem("role", response.data.role);
+      navigate("/");
+    } catch (err) {
+      Swal.fire("Error", `${err.response.data.error.message}`, "error");
+    } finally {
+      setInputFormUser({
+        email: "",
+        password: "",
+      });
     }
+  };
 
     return (
         <section className="h-screen">
@@ -71,7 +84,6 @@ export default function LoginPage() {
       </div>
       <div className="xl:ml-20 xl:w-4/12 lg:w-4/12 md:w-6/12 mb-12 md:mb-0">
         <form>
-
 
           <div className="mb-6">
             <p className="text-xl subpixel-antialiased font-semibold mb-2">Welcome, Admin</p>
@@ -98,7 +110,6 @@ export default function LoginPage() {
               name="password"
             />
           </div>
-
 
           <div className="text-center lg:text-left">
             <button

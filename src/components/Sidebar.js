@@ -24,6 +24,12 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
       href: "/acceptance",
       icon: <i class="fa-solid fa-pen-to-square text-lg"></i>,
     },
+    {
+      key: 4,
+      name: "Employee List",
+      href: "/employee",
+      icon: <i class="fa-solid fa-users"></i>,
+    },
   ];
 
   const logout = (e) => {
