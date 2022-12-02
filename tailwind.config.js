@@ -5,11 +5,14 @@ module.exports = {
     extend: {
       colors: {
         body: "#F9F9F9",
+        list: "#fcf5f5",
         "primary-green": "#809500",
         "active-btn-green": "#6C7A13",
+        "green-hover": "#5f6b10",
         "btn-hover": "#E4E4E4",
         "dark-grey": "#353535",
         "text-field": "#E2E2E2",
+        blu: "#5800FF",
         border: "#B3B3B3",
       },
       padding: {

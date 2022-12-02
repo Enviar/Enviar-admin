@@ -1,7 +1,6 @@
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
-import React, { Component } from 'react'
 export default function AdminPage() {
   const [isOpen, setIsOpen] = useState(false);
 

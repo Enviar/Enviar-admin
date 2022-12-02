@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export default function DetailPage() {
@@ -48,7 +47,7 @@ export default function DetailPage() {
         throw new Error(`please fill all the field`);
       }
 
-      const response = await axios.post(
+      await axios.post(
         `https://enviar-be.herokuapp.com/status`,
         {
           ProductId: detail.Product.id,
@@ -71,7 +70,7 @@ export default function DetailPage() {
 
   useEffect(() => {
     getDetail();
-  }, []);
+  });
   if (!detail.id) {
     return <h1>loading</h1>;
   }

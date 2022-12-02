@@ -1,19 +1,18 @@
-import React, { Component } from 'react'
-import logo from "./logo.svg";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
+import "./assets/tailwind/index.css";
+import ProtectedLogin from "./components/ProtectedLogin";
+import ProtectedRoute from "./components/ProtectedRoute";
+import TestPage from "./components/Sidebar";
+import AcceptancePage from "./pages/AcceptancePage";
+import AddEmployee from "./pages/AddEmployee";
+import AddPackage from "./pages/AddPackage";
 import AdminPage from "./pages/AdminPage";
 import DetailPage from "./pages/DetailPage";
-import AcceptancePage from "./pages/AcceptancePage";
 import EmployeePage from "./pages/EmployeePage";
-import { Route, Routes } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute";
-import ProtectedLogin from "./components/ProtectedLogin";
-import "./assets/tailwind/index.css";
-import TestPage from "./components/Sidebar";
-import AddPackage from "./pages/AddPackage";
-import AddEmployee from "./pages/AddEmployee";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -29,10 +28,10 @@ function App() {
         >
           <Route index={true} element={<HomePage />} />
           <Route path="/acceptance" element={<AcceptancePage />} />
-          <Route path="/addPackage" element={<AddPackage/>} />
+          <Route path="/addPackage" element={<AddPackage />} />
           <Route path="package/:id" element={<DetailPage />} />
           <Route path="/employee" element={<EmployeePage />} />
-          <Route path="/addEmployee" element={<AddEmployee/>}/>
+          <Route path="/addEmployee" element={<AddEmployee />} />
           <Route path="/test" element={<TestPage />} />
         </Route>
         <Route

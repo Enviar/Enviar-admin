@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Sidebar({ handleTrigger, isOpenState }) {
   const navigate = useNavigate();
@@ -53,7 +52,7 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
       />
       <div
         className={`sidebar fixed top-0 bottom-0 lg:left-0 p-2 duration-300 bg-primary-green tracking-wide ${
-          isOpenState ? "w-[260px]" : "w-[70px] bg-green-500"
+          isOpenState ? "w-[260px]" : "w-[70px]"
         }`}
       >
         <div className="text-gray-100 text-xl">

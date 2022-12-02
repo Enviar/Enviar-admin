@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from "react";
 import DatalistInput from "react-datalist-input";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function AddPackage() {
   const navigate = useNavigate();
@@ -43,7 +42,7 @@ export default function AddPackage() {
 
   const onSubmit = async (e) => {
     try {
-      const response = await axios.post(
+      await axios.post(
         `https://enviar-be.herokuapp.com/product`,
         {
           senderName: inputFormPackage.senderName,
@@ -69,6 +68,41 @@ export default function AddPackage() {
     }
   };
 
+  const packageType = [
+    {
+      name: "Electronics",
+      value: "Electronics",
+    },
+    {
+      name: "Food & Beverage",
+      value: "Food & Beverage",
+    },
+    {
+      name: "Medicine",
+      value: "Medicine",
+    },
+    {
+      name: "Clothes",
+      value: "Clothes",
+    },
+    {
+      name: "Toys",
+      value: "Toys",
+    },
+    {
+      name: "Stationery",
+      value: "Stationery",
+    },
+    {
+      name: "Cosmetics",
+      value: "Cosmetics",
+    },
+    {
+      name: "Otomotive",
+      value: "Otomotive",
+    },
+  ];
+
   useEffect(() => {
     getCity();
   }, []);
@@ -84,7 +118,7 @@ export default function AddPackage() {
             Add new package order by filling multiple fields of information
           </p>
         </div>
-        <div className="my-5 text-left py-2 px-7 shadow-lg w-10/12">
+        <div className="my-5 text-left py-2 px-7 shadow-lg shadow-gray-300 rounded-lg w-10/12">
           <div className="w-3/4">
             <p className="text-xl font-semibold mt-8 mb-4">
               Sender information
@@ -178,14 +212,23 @@ export default function AddPackage() {
             </div>
             <div className="mt-4 flex px-5 items-center justify-between">
               <p className="font-medium">Package Type</p>
-              <input
+              {/* <input
                 className="border-2 rounded-md px-3 py-1 h-14 w-4/6 focus:border-green-400 outline-none"
                 value={inputFormPackage.typeProduct}
                 onChange={(e) => handleInputChange(e)}
                 type="text"
                 placeholder="Package Type"
                 name="typeProduct"
-              />
+              /> */}
+              <select
+                className="border-2 rounded-md px-30 py-1 h-14 w-4/6 focus:border-green-400 outline-none"
+                name="typeProduct"
+                onChange={(e) => handleInputChange(e)}
+              >
+                {packageType.map((type) => {
+                  return <option value={type.value}>{type.name}</option>;
+                })}
+              </select>
             </div>
             <div className="mt-4 flex px-5 items-center justify-between">
               <p className="font-medium">Service Type</p>
