@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 export default function LoginPage() {
   const navigate = useNavigate();
   const [inputFormUser, setInputFormUser] = useState({
-    email: "ravi1@gmail.com",
+    email: "adit1@gmail.com",
     password: "123456",
   });
   const [isLoading, setIsLoading] = useState(false);

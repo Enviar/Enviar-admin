@@ -9,7 +9,7 @@ export default function EmployeePage() {
   const [emplo, setEmplo] = useState({});
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-
+  const employeeRole = localStorage.getItem("role")
   const getEmployee = async () => {
     try {
       const response = await axios.get(
@@ -90,30 +90,36 @@ export default function EmployeePage() {
               <i class="fa-solid fa-magnifying-glass text-dark-grey"></i>
             </button>
           </div>
-          <div className="">
-            <Link
-              to={"/addEmployee"}
-              className="px-5 py-[15.5px] rounded-lg bg-active-btn-green hover:bg-green-hover text-white font-semibold duration-150"
-            >
-              <i class="fa-solid fa-plus mr-2"></i>
-              Create New Employee
-            </Link>
-          </div>
+          {employeeRole === "super_admin" ? (
+  <div className="">
+  <Link
+    to={"/addEmployee"}
+    className="px-5 py-[15.5px] rounded-lg bg-active-btn-green hover:bg-green-hover text-white font-semibold duration-150"
+  >
+    <i class="fa-solid fa-plus mr-2"></i>
+    Create New Employee
+  </Link>
+</div>
+          ): null}
+        
         </div>
-        <div className="mt-5">
-          <EmployeeListComponent
-            lists={employee}
-            funcId={getEmployeeById}
-            funcDelete={deleteEmployee}
-          />
-          <ModalEdit
-            show={showModal}
-            setShow={setShowModal}
-            data={emplo}
-            setData={setEmplo}
-            getAll={getEmployee}
-          />
-        </div>
+        
+   <div className="mt-5">
+   <EmployeeListComponent
+     lists={employee}
+     funcId={getEmployeeById}
+     funcDelete={deleteEmployee}
+   />
+   <ModalEdit
+     show={showModal}
+     setShow={setShowModal}
+     data={emplo}
+     setData={setEmplo}
+     getAll={getEmployee}
+   />
+ </div>
+        
+     
       </div>
     );
   }
