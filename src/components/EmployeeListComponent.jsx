@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HomeTableComponent({ lists, funcId, funcDelete }) {
   // const navigate = useNavigate()
-
+  const employeePage = localStorage.getItem("role");
   const openDetail = (e, id) => {
     e.preventDefault();
     // console.log(id);
@@ -57,20 +57,22 @@ export default function HomeTableComponent({ lists, funcId, funcDelete }) {
             </div>
           </div>
         </div>
-        <div className="h-[100px] flex font-semibold">
-          <button
-            className="w-24 rounded-l-md bg-blu text-white hover:bg-blue-800 duration-150"
-            onClick={(e) => openDetail(e, emp.id)}
-          >
-            Edit
-          </button>
-          <button
-            className="w-24 rounded-r-md bg-red-600 text-white hover:bg-red-700 duration-150"
-            onClick={(e) => deleteData(e, emp.id)}
-          >
-            Delete
-          </button>
-        </div>
+        {employeePage === "super_admin" ? (
+          <div className="h-[100px] flex font-semibold">
+            <button
+              className="w-24 rounded-l-md bg-blu text-white hover:bg-blue-800 duration-150"
+              onClick={(e) => openDetail(e, emp.id)}
+            >
+              Edit
+            </button>
+            <button
+              className="w-24 rounded-r-md bg-red-600 text-white hover:bg-red-700 duration-150"
+              onClick={(e) => deleteData(e, emp.id)}
+            >
+              Delete
+            </button>
+          </div>
+        ) : null}
       </div>
     );
   });

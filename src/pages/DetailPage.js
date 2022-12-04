@@ -70,7 +70,7 @@ export default function DetailPage() {
 
   useEffect(() => {
     getDetail();
-  });
+  },[]);
   if (!detail.id) {
     return <h1>loading</h1>;
   }
