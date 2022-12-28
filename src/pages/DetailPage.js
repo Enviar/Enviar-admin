@@ -70,7 +70,8 @@ export default function DetailPage() {
 
   useEffect(() => {
     getDetail();
-  });
+  }, []);
+
   if (!detail.id) {
     return <h1>loading</h1>;
   }
@@ -86,79 +87,76 @@ export default function DetailPage() {
             Details of Package are shown here
           </p>
         </div>
-        <div className="w-9/12 rounded-md shadow-md text-left py-8 px-12 text-lg tracking-wide">
-          <p className="bg-primary-green p-4 text-white rounded">
+        <div className="w-9/12 rounded-md shadow-md text-left py-8 px-12 text-lg tracking-wide mb-14">
+          <p className="bg-primary-green p-4 text-white rounded text-xl">
             Package ID: &nbsp;
             <span className="font-semibold">
               {detail.Product.receiptNumber}
             </span>
           </p>
           <div className="bg-active-btn-green w-full h-[10px] -mt-2"></div>
-          <div className="flex justify-between">
-            <div className="flex justify-between w-4/12">
+          <div className="flex justify-between mt-4">
+            <div className="flex justify-between w-2/5 mr-10">
               <div className="">
+                <p className="my-7">Recipient: </p>
+                <p className="my-7">Recipient Phone: </p>
+                <p className="my-7">Sender: </p>
+                <p className="my-7">Sender Phone: </p>
                 <p className="my-7">Status: </p>
-                <p className="my-7">Package Type: </p>
-                <p className="">Destination: </p>
+                <p className="">Total Price: </p>
               </div>
               <div className="font-semibold">
+                <p className="my-7">{detail.Product.recipientName}</p>
+                <p className="my-7">{detail.Product.recipientPhone}</p>
+                <p className="my-7">{detail.Product.senderName}</p>
+                <p className="my-7">{detail.Product.senderPhone}</p>
                 <p className="my-7">{detail.notes}</p>
-                <p className="my-7">{detail.Product.typeProduct}</p>
-                <p className="">{destination.name}</p>
+                <p className="my-7">Rp. {detail.Product.shipmentPrice}</p>
               </div>
             </div>
             <div className="mt-6 w-3/6">
               <div class="mb-48">
-                <div className="flex justify-between items-center">
-                  <h1>Package Status</h1>
-                  <select
-                    onChange={(e) => setStatus(e.target.value)}
-                    value={status}
-                    class="form-select appearance-none
-                    w-4/6
-      px-3
-      py-1.5
-      text-base
-      font-normal
-      text-gray-700
-      border border-solid border-gray-300
-      rounded
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    aria-label="Default select example"
-                  >
-                    <option selected value="noStatus" disabled>
-                      Open this select menu
-                    </option>
-                    <option value="transit_dikirim">transit_dikirim</option>
-                    <option value="siap_dikirim">siap_dikirim</option>
-                  </select>
-                </div>
-
-                <div className="flex justify-between items-center mt-5">
-                  <h1>Store Location</h1>
-                  <select
-                    onChange={(e) => setStoreDet(e.target.value)}
-                    value={storeDet}
-                    class="form-select appearance-none
-                    w-4/6
-                    
-      px-3
-      py-1.5
-      text-base
-      font-normal
-      text-gray-700
-      border border-solid border-gray-300
-      rounded
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    aria-label="Default select example"
-                  >
-                    <option selected value="0" disabled>
-                      Open this select menu
-                    </option>
-                    {store.map((el) => {
-                      return <option value={el.id}>{el.name}</option>;
-                    })}
-                  </select>
+                <div className="flex justify-between">
+                  <div className="">
+                    <p className="">Package Type: </p>
+                    <p className="my-7">Package Weight: </p>
+                    <p className="my-7">Destination: </p>
+                    <p className="my-7">Service Type: </p>
+                    <h1 className="my-7">Package Status</h1>
+                    <h1>Store Location</h1>
+                  </div>
+                  <div className="font-semibold">
+                    <p className="">{detail.Product.typeProduct}</p>
+                    <p className="my-7">{detail.Product.weightProduct} kg</p>
+                    <p className="my-7">{destination.name}</p>
+                    <p className="mt-7 mb-5">{detail.Product.typeService}</p>
+                    <select
+                      onChange={(e) => setStatus(e.target.value)}
+                      value={status}
+                      className="mb-5 w-[230px] form-select appearance-none px-3 py-1.5 text-base font-normal text-gray-700 border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      aria-label="Default select example"
+                    >
+                      <option selected value="noStatus" disabled>
+                        Open this select menu
+                      </option>
+                      <option value="transit_dikirim">transit_dikirim</option>
+                      <option value="siap_dikirim">siap_dikirim</option>
+                    </select>
+                    <br />
+                    <select
+                      onChange={(e) => setStoreDet(e.target.value)}
+                      value={storeDet}
+                      class="w-[230px] form-select appearance-none px-3 py-1.5 text-base font-normal text-gray-700 border border-solid border-gray-300 rounded focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      aria-label="Default select example"
+                    >
+                      <option selected value="0" disabled>
+                        Open this select menu
+                      </option>
+                      {store.map((el) => {
+                        return <option value={el.id}>{el.name}</option>;
+                      })}
+                    </select>
+                  </div>
                 </div>
               </div>
               <div className="text-right">
