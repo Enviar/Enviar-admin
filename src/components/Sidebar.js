@@ -54,6 +54,7 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
         className={`sidebar fixed top-0 bottom-0 lg:left-0 p-2 duration-300 bg-primary-green tracking-wide ${
           isOpenState ? "w-[260px]" : "w-[70px]"
         }`}
+        data-testid="sidebar-comp"
       >
         <div className="text-gray-100 text-xl">
           <div
@@ -114,6 +115,7 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
         })}
         <div className="my-4 bg-white h-[.1px]"></div>
         <div
+          data-testid="logout-btn"
           className={`p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer absolute bottom-4 hover:bg-blue-600 text-white ${
             isOpenState ? "w-[95%]" : "w-[75%]"
           }`}
