@@ -14,7 +14,7 @@ export default function HomeTableComponent({ lists, funcId, funcDelete }) {
     // console.log(id);
     funcDelete(id);
   };
-  return lists.map((emp) => {
+  return lists?.map((emp) => {
     return (
       <div className="text-left mb-4 flex justify-between duration-200">
         <div className="bg-active-btn-green w-24 rounded-l-md">
