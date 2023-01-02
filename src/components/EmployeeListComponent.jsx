@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function HomeTableComponent({ lists, funcId, funcDelete }) {
+export default function EmployeeListComponent({ lists, funcId, funcDelete }) {
   // const navigate = useNavigate()
   const employeePage = localStorage.getItem("role");
   const openDetail = (e, id) => {
@@ -68,6 +68,7 @@ export default function HomeTableComponent({ lists, funcId, funcDelete }) {
             <button
               className="w-24 rounded-r-md bg-red-600 text-white hover:bg-red-700 duration-150"
               onClick={(e) => deleteData(e, emp.id)}
+              data-testid="delete-btn"
             >
               Delete
             </button>

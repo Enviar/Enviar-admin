@@ -9,25 +9,25 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
       key: 1,
       name: "Dashboard",
       href: "/",
-      icon: <i class="fa-solid fa-house text-lg"></i>,
+      icon: <i className="fa-solid fa-house text-lg"></i>,
     },
     {
       key: 2,
       name: "Create Package",
       href: "/addPackage",
-      icon: <i class="fa-solid fa-folder-plus text-lg"></i>,
+      icon: <i className="fa-solid fa-folder-plus text-lg"></i>,
     },
     {
       key: 3,
       name: "Update Status",
       href: "/acceptance",
-      icon: <i class="fa-solid fa-pen-to-square text-lg"></i>,
+      icon: <i className="fa-solid fa-pen-to-square text-lg"></i>,
     },
     {
       key: 4,
       name: "Employee List",
       href: "/employee",
-      icon: <i class="fa-solid fa-users"></i>,
+      icon: <i className="fa-solid fa-users"></i>,
     },
   ];
 
@@ -47,8 +47,8 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
       />
       <div
         className={`sidebar fixed top-0 bottom-0 lg:left-0 p-2 duration-300 bg-primary-green tracking-wide ${
@@ -79,7 +79,7 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
               </h1>
             </div>
             <i
-              class={`fa-solid fa-bars text-2xl cursor-pointer ${
+              className={`fa-solid fa-bars text-2xl cursor-pointer ${
                 isOpenState ? "" : "mr-[17px]"
               }`}
               onClick={handleTrigger}
@@ -90,7 +90,7 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
         </div>
         <div
           className="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700 text-white"
-          onClick={isOpenState ? "" : handleTrigger}
+          onClick={isOpenState ? null : handleTrigger}
         >
           <i className="bi bi-search text-sm" onClick={handleTrigger}></i>
           <input
@@ -121,7 +121,7 @@ export default function Sidebar({ handleTrigger, isOpenState }) {
           }`}
           onClick={(e) => logout(e)}
         >
-          <i class="fa-solid fa-right-from-bracket text-lg"></i>
+          <i className="fa-solid fa-right-from-bracket text-lg"></i>
           <div className="text-[15px] ml-4 text-gray-200 font-bold">
             {isOpenState ? "Logout" : ""}
           </div>

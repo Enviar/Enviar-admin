@@ -42,6 +42,7 @@ export default function ModalEdit({ show, setShow, data, setData, getAll }) {
           <div className="bg-white p-10 rounded-lg z-50 relative w-[600px]">
             <div
               onClick={() => setShow(false)}
+              data-testid="edit-modal"
               className="absolute top-3 right-3 bg-gray-300 p-2 rounded-full hover:bg-gray-400 transition-all cursor-pointer"
             >
               <img
@@ -56,7 +57,7 @@ export default function ModalEdit({ show, setShow, data, setData, getAll }) {
                 <p>First Name:</p>
                 <input
                   className="border-2 rounded-md px-3 py-1 h-14 w-4/6 focus:border-green-400 outline-none"
-                  value={data.firstname}
+                  value={data?.firstname}
                   onChange={handleInputChange}
                   name="firstname"
                 />
@@ -66,7 +67,7 @@ export default function ModalEdit({ show, setShow, data, setData, getAll }) {
                 <p>Last Name:</p>
                 <input
                   className="border-2 rounded-md px-3 py-1 h-14 w-4/6 focus:border-green-400 outline-none"
-                  value={data.lastname}
+                  value={data?.lastname}
                   onChange={handleInputChange}
                   name="lastname"
                 />
@@ -76,7 +77,7 @@ export default function ModalEdit({ show, setShow, data, setData, getAll }) {
                 <p>Phone:</p>
                 <input
                   className="border-2 rounded-md px-3 py-1 h-14 w-4/6 focus:border-green-400 outline-none"
-                  value={data.phoneNumber}
+                  value={data?.phoneNumber}
                   onChange={handleInputChange}
                   name="phoneNumber"
                 />
@@ -86,6 +87,7 @@ export default function ModalEdit({ show, setShow, data, setData, getAll }) {
               <button
                 onClick={() => handleSubmit()}
                 className="px-5 py-3 bg-primary-green text-white rounded-md hover:bg-green-700 transition-all font-semibold"
+                data-testid="details-btn"
               >
                 Save Details
               </button>

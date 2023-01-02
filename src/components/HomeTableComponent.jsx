@@ -23,7 +23,6 @@ export default function HomeTableComponent({ lists }) {
   return (
     <div className="mb-14">
       {lists?.map((list) => {
-        console.log(randomColor());
         return (
           <div className="flex items-center cursor-pointer duration-150 hover:translate-x-4">
             <div
@@ -40,26 +39,26 @@ export default function HomeTableComponent({ lists }) {
             >
               <div className="text-left border-r-2 border-gray-400 pr-4">
                 <p>Recipient Number:</p>
-                <p className="font-medium">{list[0].Product.receiptNumber}</p>
+                <p className="font-medium">{list[0].Product?.receiptNumber}</p>
               </div>
               <div className="flex justify-between w-5/6 px-8">
                 <div>
                   <p>Recipient:</p>
-                  <p className="font-medium">{list[0].Product.senderName}</p>
+                  <p className="font-medium">{list[0].Product?.senderName}</p>
                 </div>
                 <div>
                   <p>Recipient Address:</p>
                   <p className="font-medium">
-                    {list[0].Product.recipientAddress}
+                    {list[0].Product?.recipientAddress}
                   </p>
                 </div>
                 <div>
                   <p>Package Type:</p>
-                  <p className="font-medium">{list[0].Product.typeProduct}</p>
+                  <p className="font-medium">{list[0].Product?.typeProduct}</p>
                 </div>
                 <div>
                   <p>Service:</p>
-                  <p className="font-medium">{list[0].Product.typeService}</p>
+                  <p className="font-medium">{list[0].Product?.typeService}</p>
                 </div>
                 <div>
                   <p>Package Status:</p>
