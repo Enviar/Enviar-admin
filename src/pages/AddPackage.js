@@ -212,14 +212,6 @@ export default function AddPackage() {
             </div>
             <div className="mt-4 flex px-5 items-center justify-between">
               <p className="font-medium">Package Type</p>
-              {/* <input
-                className="border-2 rounded-md px-3 py-1 h-14 w-4/6 focus:border-green-400 outline-none"
-                value={inputFormPackage.typeProduct}
-                onChange={(e) => handleInputChange(e)}
-                type="text"
-                placeholder="Package Type"
-                name="typeProduct"
-              /> */}
               <select
                 className="border-2 rounded-md px-30 py-1 h-14 w-4/6 focus:border-green-400 outline-none"
                 name="typeProduct"

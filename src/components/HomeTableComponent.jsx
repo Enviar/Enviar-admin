@@ -23,7 +23,6 @@ export default function HomeTableComponent({ lists }) {
   return (
     <div className="mb-14">
       {lists.map((list) => {
-        console.log(randomColor());
         return (
           <div className="flex items-center cursor-pointer duration-150 hover:translate-x-4">
             <div
