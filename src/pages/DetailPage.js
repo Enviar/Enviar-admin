@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import { MyDocument } from "../components/PdfReceipt";
 
 export default function DetailPage() {
   const { id } = useParams();
@@ -34,6 +36,7 @@ export default function DetailPage() {
 
       setDestination(response.data.destination);
       setDetail(response.data.data);
+      console.log(response.data.data);
     } catch (err) {
       Swal.fire("Error", `Server down, try again later`, "error");
     }
@@ -70,6 +73,7 @@ export default function DetailPage() {
 
   useEffect(() => {
     getDetail();
+    console.log(detail);
   }, []);
 
   if (!detail.id) {
@@ -87,7 +91,7 @@ export default function DetailPage() {
             Details of Package are shown here
           </p>
         </div>
-        <div className="w-9/12 rounded-md shadow-md text-left py-8 px-12 text-lg tracking-wide mb-14">
+        <div className="w-9/12 rounded-md border-2 border-gray-300 text-left py-8 px-12 text-lg tracking-wide mb-14">
           <p className="bg-primary-green p-4 text-white rounded text-xl">
             Package ID: &nbsp;
             <span className="font-semibold">
@@ -128,7 +132,7 @@ export default function DetailPage() {
                   <div className="font-semibold">
                     <p className="">{detail.Product.typeProduct}</p>
                     <p className="my-7">{detail.Product.weightProduct} kg</p>
-                    <p className="my-7">{destination.name}</p>
+                    <p className="my-7">{destination?.name}</p>
                     <p className="mt-7 mb-5">{detail.Product.typeService}</p>
                     <select
                       onChange={(e) => setStatus(e.target.value)}
@@ -159,12 +163,20 @@ export default function DetailPage() {
                   </div>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="text-right flex text-base">
+                <PDFDownloadLink
+                  document={<MyDocument details={detail.Product} />}
+                  fileName={`${detail.Product.receiptNumber}_receipt.pdf`}
+                  className="bg-blue-600 h-11 w-5/6 rounded text-white mr-5 tracking-wide font-semibold"
+                  style={{ textAlign: "center", paddingTop: "9px" }}
+                >
+                  Download Package Receipt
+                </PDFDownloadLink>
                 <button
                   onClick={(e) => addStatus(e)}
-                  className="bg-active-btn-green h-11 w-2/3 rounded text-white mr-auto tracking-wide"
+                  className="bg-active-btn-green h-11 w-3/6 rounded text-white mr-auto tracking-wide font-semibold"
                 >
-                  Update Package Details
+                  Update Details
                 </button>
               </div>
             </div>
